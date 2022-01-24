@@ -884,7 +884,7 @@ step-touch-sync-done: &step-touch-sync-done
 step-maybe-restore-src-cache: &step-maybe-restore-src-cache
   restore_cache:
     keys:
-      - v8-src-cache-{{ checksum "src/electron/.depshash" }}
+      - v9-src-cache-{{ checksum "src/electron/.depshash" }}
     name: Restoring src cache
 step-maybe-restore-src-cache-marker: &step-maybe-restore-src-cache-marker
   restore_cache:
@@ -900,8 +900,8 @@ step-maybe-restore-git-cache: &step-maybe-restore-git-cache
     paths:
       - ~/.gclient-cache
     keys:
-      - v2-gclient-cache-{{ checksum "src/electron/.circle-sync-done" }}-{{ checksum "src/electron/DEPS" }}
-      - v2-gclient-cache-{{ checksum "src/electron/.circle-sync-done" }}
+      - v3-gclient-cache-{{ checksum "src/electron/.circle-sync-done" }}-{{ checksum "src/electron/DEPS" }}
+      - v3-gclient-cache-{{ checksum "src/electron/.circle-sync-done" }}
     name: Conditionally restoring git cache
 
 step-restore-out-cache: &step-restore-out-cache
@@ -926,7 +926,7 @@ step-save-git-cache: &step-save-git-cache
   save_cache:
     paths:
       - ~/.gclient-cache
-    key: v2-gclient-cache-{{ checksum "src/electron/.circle-sync-done" }}-{{ checksum "src/electron/DEPS" }}
+    key: v3-gclient-cache-{{ checksum "src/electron/.circle-sync-done" }}-{{ checksum "src/electron/DEPS" }}
     name: Persisting git cache
 
 step-save-out-cache: &step-save-out-cache
@@ -971,7 +971,7 @@ step-save-src-cache: &step-save-src-cache
   save_cache:
     paths:
       - /var/portal
-    key: v8-src-cache-{{ checksum "/var/portal/src/electron/.depshash" }}
+    key: v9-src-cache-{{ checksum "/var/portal/src/electron/.depshash" }}
     name: Persisting src cache
 step-make-src-cache-marker: &step-make-src-cache-marker
   run:
