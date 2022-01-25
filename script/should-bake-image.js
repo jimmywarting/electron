@@ -62,11 +62,11 @@ async function prepareAppVeyorImage (opts) {
   const image = await checkAppVeyorImage({ buildCloudId, imageVersion });
 
   if (image) {
-    console.log(`Image not found! Baking new image for ${CHROMIUM_VERSION} on cloud: ${buildCloudId}`);
-    return 0;
+    console.log(`Image not found! Baking new image for ${imageVersion} on cloud: ${buildCloudId}`);
+    return [0, imageVersion];
   } else {
-    console.log(`Image found for ${CHROMIUM_VERSION} on cloud: ${buildCloudId}`);
-    return 1;
+    console.log(`Image found for ${imageVersion} on cloud: ${buildCloudId}`);
+    return [1, imageVersion];
   }
 }
 
